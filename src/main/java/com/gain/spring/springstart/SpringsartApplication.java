@@ -1,4 +1,4 @@
-package com.gain.spring.springsart;
+package com.gain.spring.springstart;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
