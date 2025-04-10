@@ -2,6 +2,7 @@ package com.gain.spring.springstart.controller;
 
 import com.gain.spring.springstart.dto.UserDto;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,8 +28,9 @@ public class HelloController {
     }
 
     @PostMapping("/submit")
-    @ResponseBody
-    public String submit(@ModelAttribute UserDto userDto) {
-        return "받은 사용자 정보: " + userDto.toString();
+    public String submit(@ModelAttribute UserDto userDto, Model model) {
+        model.addAttribute("user", userDto);
+        return "result";
     }
+
 }
