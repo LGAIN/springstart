@@ -5,9 +5,11 @@
     <title>result</title>
 </head>
 <body>
-  <h1>제출된 정보</h1>
-  <p>이름: <span th:text="${user.name}"></span> </p>
-  <p>이메일: <span th:text="${user.email}"></span> </p>
-  <p>나이: <span th:text="${user.age}"></span> </p>
+    <h1>제출된 정보</h1>
+    <p>이름: <span th:text="${user.name}"></span> </p>
+    <p>이메일: <span th:text="${user.email}"></span> </p>
+    <p>나이: <span th:text="${user.age}"></span> </p>
+    <p th:if="${user.age} >= 20"> 성인입니다. </p>
+    <p th:unless="${user.age} >= 20"> 미성년자입니다. </p>
 </body>
 </html>
