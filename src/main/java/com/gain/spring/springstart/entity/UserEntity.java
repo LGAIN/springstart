@@ -1,4 +1,4 @@
-package com.gain.spring.springstart.service;
+package com.gain.spring.springstart.entity;
 
 import jakarta.persistence.*;
 

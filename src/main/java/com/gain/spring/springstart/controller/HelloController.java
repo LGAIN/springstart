@@ -1,6 +1,7 @@
 package com.gain.spring.springstart.controller;
 
 import com.gain.spring.springstart.dto.UserDto;
+import com.gain.spring.springstart.entity.UserEntity;
 import com.gain.spring.springstart.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -34,9 +35,9 @@ public class HelloController {
     }
 
     @PostMapping("/submit")
-    public String submit(@ModelAttribute UserDto userDto, Model model) {
-        userService.saveUser(userDto); // 유저 저장
-        model.addAttribute("user", userDto);
+    public String submit(@ModelAttribute UserEntity userEntity, Model model) {
+        userService.saveUser(userEntity); // 유저 저장
+        model.addAttribute("user", userEntity);
         return "result";
     }
 
