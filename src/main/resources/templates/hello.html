@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Hello</title>
 </head>
 <body>
     <h1>Hello form HTML</h1>
+    <a th:href="@{/form}">
+        <button>새 사용자 등록하기</button>
+    </a>
 </body>
 </html>
