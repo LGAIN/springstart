@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>test form</title>
 </head>
 <body>
-    <form action="/submit" method="post">
+    <form th:action="@{/submit}" method="post">
         이름: <input type="text" name="name"> <br>
         이메일: <input type="text" name="email"> <br>
         나이: <input type="int" name="age"> <br>

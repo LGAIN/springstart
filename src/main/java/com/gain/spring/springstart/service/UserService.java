@@ -38,4 +38,9 @@ public class UserService {
     public List<UserEntity> getUsers() {
         return userRepository.findAll();
     }
+
+    public UserEntity getUserById(Long id) {
+        return userRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("해당 유저가 없습니다."));
+    }
 }
