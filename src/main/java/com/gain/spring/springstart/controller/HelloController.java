@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.*;
+
 @Controller
 public class HelloController {
 
@@ -33,4 +35,12 @@ public class HelloController {
         return "result";
     }
 
+    @GetMapping("/users")
+    public String showUsers(Model model) {
+        List<UserDto> users = new ArrayList<>();
+        users.add(new UserDto("이가인", "lee@mail.com", 20));
+        users.add(new UserDto("홍길동", "hong@mail.com", 10));
+        model.addAttribute("userList", users);
+        return "users";
+    }
 }
