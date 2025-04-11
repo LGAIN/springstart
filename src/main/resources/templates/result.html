@@ -11,5 +11,8 @@
     <p>나이: <span th:text="${user.age}"></span> </p>
     <p th:if="${user.age} >= 20"> 성인입니다. </p>
     <p th:unless="${user.age} >= 20"> 미성년자입니다. </p>
+    <a th:href="@{/users}">
+        <button>사용자 목록 보기</button>
+    </a>
 </body>
 </html>

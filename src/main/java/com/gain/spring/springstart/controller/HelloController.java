@@ -1,6 +1,8 @@
 package com.gain.spring.springstart.controller;
 
 import com.gain.spring.springstart.dto.UserDto;
+import com.gain.spring.springstart.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +14,8 @@ import java.util.*;
 
 @Controller
 public class HelloController {
+    @Autowired
+    private UserService userService;
 
     @GetMapping("/hello")
     @ResponseBody
@@ -31,16 +35,14 @@ public class HelloController {
 
     @PostMapping("/submit")
     public String submit(@ModelAttribute UserDto userDto, Model model) {
+        userService.saveUser(userDto); // 유저 저장
         model.addAttribute("user", userDto);
         return "result";
     }
 
     @GetMapping("/users")
     public String showUsers(Model model) {
-        List<UserDto> users = new ArrayList<>();
-        users.add(new UserDto("이가인", "lee@mail.com", 20));
-        users.add(new UserDto("홍길동", "hong@mail.com", 10));
-        model.addAttribute("userList", users);
+        model.addAttribute("userList", userService.getUsers());
         return "users";
     }
 }
