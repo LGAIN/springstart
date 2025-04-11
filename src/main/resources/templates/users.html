@@ -13,6 +13,10 @@
         나이: <span th:text="${u.age}"></span><br>
         <span th:if="${u.age} >= 20">성인입니다.</span>
         <span th:unless="${u.age} >= 20">미성년자입니다.</span>
+
+        <form th:action="@{'/users/' + ${u.id} + '/edit'}" method="get" style="display:inline;">
+            <button type="submit">수정</button>
+        </form>
     </li>
 </ul>
 </body>

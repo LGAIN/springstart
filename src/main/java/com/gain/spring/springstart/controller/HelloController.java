@@ -3,6 +3,7 @@ package com.gain.spring.springstart.controller;
 import com.gain.spring.springstart.dto.UserDto;
 import com.gain.spring.springstart.entity.UserEntity;
 import com.gain.spring.springstart.service.UserService;
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -51,4 +52,16 @@ public class HelloController {
         return "userDetail";
     }
 
+    @GetMapping("/users/{id}/edit")
+    public String editUserForm(@PathVariable Long id, Model model) {
+        UserEntity user = userService.getUserById(id);
+        model.addAttribute("user", user);
+        return "editUser";
+    }
+
+    @PostMapping("/users/{id}/update")
+    public String updateUser(@PathVariable Long id, @ModelAttribute UserEntity updatedUser) {
+        userService.updateUser(id, updatedUser);
+        return "redirect:/users/" + id;
+    }
 }
