@@ -4,6 +4,7 @@ import com.gain.spring.springstart.dto.UserDto;
 import com.gain.spring.springstart.entity.UserEntity;
 import com.gain.spring.springstart.repository.UserRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 
@@ -26,6 +27,7 @@ public class UserService {
 
     private final UserRepository userRepository;
 
+
     // 생성자 주입
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -42,5 +44,15 @@ public class UserService {
     public UserEntity getUserById(Long id) {
         return userRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("해당 유저가 없습니다."));
+    }
+
+    @Transactional
+    public void updateUser(Long id, UserEntity updatedUser) {
+        UserEntity existing = userRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("없는 사용자 입니다."));
+
+        existing.setName(updatedUser.getName());
+        existing.setEmail(updatedUser.getEmail());
+        existing.setAge(updatedUser.getAge());
     }
 }
