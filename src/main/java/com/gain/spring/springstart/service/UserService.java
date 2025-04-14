@@ -55,4 +55,9 @@ public class UserService {
         existing.setEmail(updatedUser.getEmail());
         existing.setAge(updatedUser.getAge());
     }
+
+    @Transactional
+    public void deleteUser(Long id) {
+        userRepository.deleteById(id);
+    }
 }

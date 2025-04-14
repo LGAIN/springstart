@@ -17,6 +17,10 @@
         <form th:action="@{'/users/' + ${u.id} + '/edit'}" method="get" style="display:inline;">
             <button type="submit">수정</button>
         </form>
+
+        <form th:action="@{'/users/'+ ${u.id} + '/delete'}" method="post" style="display: inline">
+            <button type="submit">삭제</button>
+        </form>
     </li>
 </ul>
 </body>

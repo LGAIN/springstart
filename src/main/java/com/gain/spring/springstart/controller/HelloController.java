@@ -64,4 +64,10 @@ public class HelloController {
         userService.updateUser(id, updatedUser);
         return "redirect:/users/" + id;
     }
+
+    @PostMapping("/users/{id}/delete")
+    public String deleteUser(@PathVariable Long id) {
+        userService.deleteUser(id);
+        return "redirect:/users";
+    }
 }
