@@ -19,7 +19,7 @@ public class PostService {
         postRepository.save(post);
     }
 
-    public List<PostEntity> getAllPost() {
+    public List<PostEntity> getAllPosts() {
         return postRepository.findAll();
     }
 

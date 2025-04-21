@@ -16,15 +16,16 @@ public class PostEntity {
 
     private String title;
     private String content;
+    private String writer;
     private int date;
 
     public PostEntity() {
-
     }
 
-    public PostEntity(String title, String content, int date) {
+    public PostEntity(String title, String content, String writer, int date) {
         this.title = title;
         this.content = content;
+        this.writer = writer;
         this.date = date;
     }
 }

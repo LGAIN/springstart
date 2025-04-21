@@ -86,9 +86,9 @@ public class HelloController {
         return "redirect:/posts";
     }
 
-    @GetMapping("/post")
+    @GetMapping("/posts")
     public String listPosts (Model model) {
-        List<PostEntity> posts = postService.getAllPost();
+        List<PostEntity> posts = postService.getAllPosts();
         model.addAttribute("postList", posts);
         return "postList";
     }
