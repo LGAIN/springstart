@@ -17,6 +17,13 @@
             <strong>제목:</strong> <span th:text="${p.title}"></span><br>
             <strong>내용:</strong> <span th:text="${p.content}"></span><br>
             <strong>작성자:</strong> <span th:text="${p.writer}"></span>
+            <br/>
+            <form th:action="@{'/posts/' + ${p.id} + '/edit'}" method="get" style="display:inline">
+                <button class="btn btn-outline-primary">수정</button>
+            </form>
+            <form th:action="@{'/posts/' + ${p.id} + '/delete'}" method="post" style="display:inline">
+                <button class="btn btn-outline-danger">삭제</button>
+            </form>
         </li>
     </ul>
 </div>

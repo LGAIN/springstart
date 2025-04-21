@@ -28,4 +28,5 @@ public class PostEntity {
         this.writer = writer;
         this.date = date;
     }
+
 }

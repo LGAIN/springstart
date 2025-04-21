@@ -74,6 +74,13 @@ public class HelloController {
         return "redirect:/users";
     }
 
+    @GetMapping("/posts/{id}")
+    public String getPostId(@PathVariable Long id, Model model) {
+        PostEntity post = postService.getPostById(id);
+        model.addAttribute("post", post);
+        return "postEdit";
+    }
+
     @GetMapping("/post/new")
     public String showPostForm (Model model) {
         model.addAttribute("post", new PostEntity());
@@ -91,5 +98,24 @@ public class HelloController {
         List<PostEntity> posts = postService.getAllPosts();
         model.addAttribute("postList", posts);
         return "postList";
+    }
+
+    @GetMapping("/posts/{id}/edit")
+    public String editPostForm(@PathVariable Long id, Model model) {
+        PostEntity post = postService.getPostById(id);
+        model.addAttribute("post", post);
+        return "postEdit";
+    }
+
+    @PostMapping("/posts/{id}/update")
+    public String updatePost(@PathVariable Long id, @ModelAttribute PostEntity updatedPost) {
+        postService.updatePost(id, updatedPost);
+        return "redirect:/posts";
+    }
+
+    @PostMapping("/posts/{id}/delete")
+    public String deletePost(@PathVariable Long id) {
+        postService.deletePost(id);
+        return "redirect:/posts";
     }
 }
