@@ -1,9 +1,10 @@
 package com.gain.spring.springstart.controller;
 
 import com.gain.spring.springstart.dto.UserDto;
+import com.gain.spring.springstart.entity.PostEntity;
 import com.gain.spring.springstart.entity.UserEntity;
+import com.gain.spring.springstart.service.PostService;
 import com.gain.spring.springstart.service.UserService;
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +16,8 @@ import java.util.*;
 public class HelloController {
     @Autowired
     private UserService userService;
+    @Autowired
+    private PostService postService;
 
     @GetMapping("/hello")
     @ResponseBody
@@ -69,5 +72,24 @@ public class HelloController {
     public String deleteUser(@PathVariable Long id) {
         userService.deleteUser(id);
         return "redirect:/users";
+    }
+
+    @GetMapping("/post/new")
+    public String showPostForm (Model model) {
+        model.addAttribute("post", new PostEntity());
+        return "postForm";
+    }
+
+    @PostMapping("/posts")
+    public String submitPost (@ModelAttribute PostEntity post) {
+        postService.savePost(post);
+        return "redirect:/posts";
+    }
+
+    @GetMapping("/post")
+    public String listPosts (Model model) {
+        List<PostEntity> posts = postService.getAllPost();
+        model.addAttribute("postList", posts);
+        return "postList";
     }
 }
