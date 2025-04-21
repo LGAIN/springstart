@@ -12,20 +12,30 @@
 <body>
 <div class="container">
     <h2>게시글 목록</h2>
+    <div>
+        <a th:href="@{'/post/new'}" class="btn btn-outline-dark">게시글 작성</a>
+    </div>
     <ul class="list-group">
         <li class="list-group-item" th:each="p : ${postList}">
-            <strong>제목:</strong> <span th:text="${p.title}"></span><br>
-            <strong>내용:</strong> <span th:text="${p.content}"></span><br>
-            <strong>작성자:</strong> <span th:text="${p.writer}"></span>
+            <a th:href="@{'/posts/' + ${p.id}}" class="text-dark text-decoration-none">
+                <span th:text="${p.title}"></span><br>
+            </a>
+            <!--<strong>내용</strong> <span th:text="${p.content}"></span><br>-->
+            <strong>작성자</strong> <span th:text="${p.writer}"></span>
             <br/>
+
+            <a th:href="@{'/posts/' + ${p.id}}" class="btn btn-outline-dark">게시글 상세 조회</a>
             <form th:action="@{'/posts/' + ${p.id} + '/edit'}" method="get" style="display:inline">
                 <button class="btn btn-outline-primary">수정</button>
             </form>
-            <form th:action="@{'/posts/' + ${p.id} + '/delete'}" method="post" style="display:inline">
+            <form th:action="@{'/posts/' + ${p.id} + '/delete'}" method="post"
+                  onsubmit="return confirm('정말 삭제하시겠습니까?')"
+                  style="display:inline">
                 <button class="btn btn-outline-danger">삭제</button>
             </form>
         </li>
     </ul>
+
 </div>
 </body>
 </th:block>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/base}"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>postDetail</title>
+
+</head>
+
+<th:block layout:fragment="content">
+    <div class="container mt-4">
+        <h2> 게시글 상세 조회</h2>
+        <p>제목: <span th:text="${post.title}"></span></p>
+        <p>내용: <span th:text="${post.content}"></span></p>
+        <p>작성자: <span th:text="${post.writer}"></span></p>
+        <a href="/gain-spring/posts" class="btn btn-outline-dark">목록으로 이동하기</a>
+    </div>
+</th:block>
+
+</html>

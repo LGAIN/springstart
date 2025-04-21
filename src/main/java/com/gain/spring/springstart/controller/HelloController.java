@@ -78,7 +78,7 @@ public class HelloController {
     public String getPostId(@PathVariable Long id, Model model) {
         PostEntity post = postService.getPostById(id);
         model.addAttribute("post", post);
-        return "postEdit";
+        return "postDetail";
     }
 
     @GetMapping("/post/new")
