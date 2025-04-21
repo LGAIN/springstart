@@ -4,8 +4,9 @@ import com.gain.spring.springstart.entity.PostEntity;
 import com.gain.spring.springstart.repository.PostRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
-import java.util.List;
 
 @Service
 public class PostService {
@@ -20,8 +21,8 @@ public class PostService {
         postRepository.save(post);
     }
 
-    public List<PostEntity> getAllPosts() {
-        return postRepository.findAll();
+    public Page<PostEntity> getPostsList(Pageable pageable) {
+        return postRepository.findAll(pageable);
     }
 
     public PostEntity getPostById(Long id) {

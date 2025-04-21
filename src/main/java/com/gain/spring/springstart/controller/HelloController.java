@@ -6,6 +6,10 @@ import com.gain.spring.springstart.entity.UserEntity;
 import com.gain.spring.springstart.service.PostService;
 import com.gain.spring.springstart.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -93,10 +97,13 @@ public class HelloController {
         return "redirect:/posts";
     }
 
+
+    // posts : 게시글 목록 페이지
+    // 한 페이지에 5개씩 보여주도록 페이징
     @GetMapping("/posts")
-    public String listPosts (Model model) {
-        List<PostEntity> posts = postService.getAllPosts();
-        model.addAttribute("postList", posts);
+    public String listPosts (Model model, @PageableDefault(size = 5, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
+        Page<PostEntity> postPage = postService.getPostsList(pageable);
+        model.addAttribute("postPage", postPage);
         return "postList";
     }
 

@@ -15,6 +15,7 @@
         <p>제목: <span th:text="${post.title}"></span></p>
         <p>내용: <span th:text="${post.content}"></span></p>
         <p>작성자: <span th:text="${post.writer}"></span></p>
+        <p>작성일  <span th:text="${#temporals.format(post.createdAt, 'yyyy-MM-dd')}"></span></p>
         <a href="/gain-spring/posts" class="btn btn-outline-dark">목록으로 이동하기</a>
     </div>
 </th:block>
