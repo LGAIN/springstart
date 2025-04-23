@@ -13,7 +13,10 @@ public class UserEntity {
     private Long id;
 
     private String name; // column 이름은 name
+
+    @Column(unique = true, nullable = false)
     private String email; // column 이름은 email
+    private String password;
     private int age; // column 이름은 age
 
     // 기본 생성자
@@ -21,9 +24,10 @@ public class UserEntity {
 
     }
 
-    public UserEntity(String name, String email, int age) {
+    public UserEntity(String name, String email, String password, int age) {
         this.name = name;
         this.email = email;
+        this.password = password;
         this.age = age;
     }
 

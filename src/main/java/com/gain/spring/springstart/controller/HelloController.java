@@ -125,4 +125,6 @@ public class HelloController {
         postService.deletePost(id);
         return "redirect:/posts";
     }
+
+
 }
