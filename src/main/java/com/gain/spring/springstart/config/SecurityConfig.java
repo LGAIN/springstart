@@ -17,7 +17,7 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable()) // CSRF 보호 끄기
                 .headers(headers -> headers.frameOptions(frameOptions -> frameOptions.sameOrigin())) // H2 iframe 허용
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/signup", "/h2-console",  "/", "/css/**", "/greet").permitAll()
+                        .requestMatchers("/**", "/signup", "/h2-console",  "/", "/css/**", "/greet").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form

@@ -19,8 +19,9 @@ public class PostService {
         this.postRepository = postRepository;
     }
 
-    public void savePost(PostEntity post) {
+    public PostEntity savePost(PostEntity post) {
         postRepository.save(post);
+        return post;
     }
 
     public Page<PostEntity> getPostsList(Pageable pageable) {
@@ -48,5 +49,9 @@ public class PostService {
 
     public Page<PostEntity> getPostsByWriter(String writer, Pageable pageable) {
         return postRepository.findByWriter(writer, pageable);
+    }
+
+    public List<PostEntity> getAllPosts() {
+        return postRepository.findAll();
     }
 }
