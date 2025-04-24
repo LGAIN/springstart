@@ -26,9 +26,21 @@ public class PostApiController {
         return ResponseEntity.ok(savedPost);
     }
 
-
     @GetMapping("{id}")
     public PostEntity getPostById (@PathVariable Long id) {
         return postService.getPostById(id);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<PostEntity> updatePost (@PathVariable Long id, @RequestBody PostEntity updatedPost) {
+        postService.updatePost(id, updatedPost);
+        return ResponseEntity.ok(updatedPost);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletePost (@PathVariable Long id) {
+        postService.deletePost(id);
+        return ResponseEntity.ok().build();
+    }
+
 }
