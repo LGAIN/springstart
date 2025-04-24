@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.*;
 
 @Controller
@@ -91,8 +92,17 @@ public class HelloController {
         return "postForm";
     }
 
+    @PostMapping("/post/new")
+    public String createPost(@ModelAttribute PostEntity post, Principal principal) {
+        String email = principal.getName(); // 로그인한 사용자의 이메일
+        post.setWriter(email);              // writer에 이메일 저장
+        postService.savePost(post);
+        return "redirect:/posts";
+    }
+
     @PostMapping("/posts")
-    public String submitPost (@ModelAttribute PostEntity post) {
+    public String submitPost (@ModelAttribute PostEntity post, Principal principal) {
+        post.setWriter(principal.getName());
         postService.savePost(post);
         return "redirect:/posts";
     }

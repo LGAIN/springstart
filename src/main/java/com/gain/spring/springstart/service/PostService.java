@@ -7,6 +7,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
+
 
 @Service
 public class PostService {
@@ -42,5 +44,9 @@ public class PostService {
     @Transactional
     public void deletePost(Long id) {
         postRepository.deleteById(id);
+    }
+
+    public Page<PostEntity> getPostsByWriter(String writer, Pageable pageable) {
+        return postRepository.findByWriter(writer, pageable);
     }
 }

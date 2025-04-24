@@ -12,12 +12,17 @@ public class UserEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY) // 자동 증가 ID
     private Long id;
 
+    @Column(nullable = false)
     private String name; // column 이름은 name
 
     @Column(unique = true, nullable = false)
     private String email; // column 이름은 email
     private String password;
     private int age; // column 이름은 age
+
+    @Column(nullable = false)
+    private String role = "USER";
+
 
     // 기본 생성자
     public UserEntity() {
